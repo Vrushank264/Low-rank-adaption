@@ -30,6 +30,9 @@ from huggingface_hub import HfFolder, Repository, whoami
 from tqdm.auto import tqdm
 from transformers import CLIPTextModel, CLIPTokenizer
 
+import sys
+sys.path.append('../')
+
 from lora_diffusion import (
     extract_lora_ups_down,
     inject_trainable_lora,
