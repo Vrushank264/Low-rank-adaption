@@ -2,9 +2,9 @@ export MODEL_NAME="runwayml/stable-diffusion-inpainting"
 export INSTANCE_DIR="/content/data/ajxd"
 export OUTPUT_DIR="../exps"
 
-pip install -r ../requirements.txt
+#pip install -r ../requirements.txt
 
-accelerate launch --mixed_precision "bf16" train_lora_w_ti.py \
+python3 ../lora_diffusion/cli_lora_pti.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
   --output_dir=$OUTPUT_DIR \
@@ -33,6 +33,7 @@ accelerate launch --mixed_precision "bf16" train_lora_w_ti.py \
   --weight_decay_lora=0.000 \
   --device="cuda:0" \
   --lora_rank=8 \
-  --use_8bit_adam \
+  --use_face_segmentation_condition \
   --lora_dropout_p=0.1 \
   --lora_scale=2.0 \
+  --log_wandb

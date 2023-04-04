@@ -32,6 +32,9 @@ from transformers import CLIPTextModel, CLIPTokenizer
 import wandb
 import fire
 
+import sys
+sys.path.append('../')
+
 from lora_diffusion import (
     PivotalTuningDatasetCapation,
     extract_lora_ups_down,
