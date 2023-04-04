@@ -1040,4 +1040,84 @@ def train(
 
 
 def main():
-    fire.Fire(train)
+    #fire.Fire(train)
+    instance_data_dir = "/home/oem/Vrushank/lora/data/ajxd"
+    pretrained_model_name_or_path = "runwayml/stable-diffusion-inpainting"
+    output_dir = "../exps"
+    train_text_encoder = True
+    pretrained_vae_name_or_path: str = None
+    revision =  None
+    perform_inversion: bool = True
+    use_template = "object"
+    train_inpainting = True
+    placeholder_tokens = "ajxd"
+    placeholder_token_at_data = None
+    initializer_tokens = "ajxd"
+    seed = 264
+    resolution = 512
+    color_jitter = True
+    train_batch_size = 1
+    sample_batch_size = 1
+    max_train_steps_tuning = 1000
+    max_train_steps_ti = 1000
+    save_steps = 100
+    gradient_accumulation_steps = 4
+    gradient_checkpointing = True
+    lora_rank = 4
+    lora_unet_target_modules={"CrossAttention", "Attention", "GEGLU"}
+    lora_clip_target_modules={"CLIPAttention"}
+    lora_dropout_p: float = 0.0
+    lora_scale: float = 1.0
+    use_extended_lora =False
+    clip_ti_decay = True
+    learning_rate_unet = 1e-4
+    learning_rate_text = 1e-5
+    learning_rate_ti= 5e-4
+    continue_inversion = False
+    continue_inversion_lr = None
+    use_face_segmentation_condition = False
+    cached_latents = False
+    use_mask_captioned_data = False
+    mask_temperature = 1.0
+    scale_lr = False
+    lr_scheduler = "linear"
+    lr_warmup_steps = 0
+    lr_scheduler_lora = "linear"
+    lr_warmup_steps_lora = 0
+    weight_decay_ti = 0.00
+    weight_decay_lora = 0.001
+    use_8bit_adam = False
+    device="cuda:0"
+    extra_args = None
+    log_wandb = True
+    wandb_log_prompt_cnt = 10
+    wandb_project_name = "aj dior"
+    wandb_entity = "vrushank"
+    proxy_token = "shoes"
+    enable_xformers_memory_efficient_attention = True
+    out_name = "final_lora"
+    
+    train(instance_data_dir, pretrained_model_name_or_path, output_dir,
+          train_text_encoder, pretrained_model_name_or_path, revision,
+          perform_inversion, use_template, train_inpainting, 
+          placeholder_tokens, placeholder_token_at_data, initializer_tokens,
+          seed, resolution, color_jitter, train_batch_size, sample_batch_size, max_train_steps_tuning,
+          max_train_steps_ti, save_steps, gradient_accumulation_steps,
+          gradient_checkpointing, lora_rank, lora_unet_target_modules,
+          lora_clip_target_modules, lora_dropout_p, lora_scale, 
+          use_extended_lora, clip_ti_decay, learning_rate_unet,
+        learning_rate_text, learning_rate_ti, continue_inversion,
+        continue_inversion_lr, use_face_segmentation_condition, cached_latents,
+        use_mask_captioned_data, mask_temperature, scale_lr, lr_scheduler,
+        lr_scheduler, lr_scheduler_lora, lr_warmup_steps,
+        weight_decay_ti, weight_decay_lora, use_8bit_adam, device,
+        extra_args, log_wandb, wandb_log_prompt_cnt, wandb_project_name,
+        wandb_entity, proxy_token, enable_xformers_memory_efficient_attention,
+        out_name)
+    
+
+if __name__ == '__main__':
+
+    import diffusers
+    print(diffusers.__version__)
+    #main()
