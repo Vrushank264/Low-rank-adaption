@@ -2,6 +2,8 @@ export MODEL_NAME="runwayml/stable-diffusion-inpainting"
 export INSTANCE_DIR="/content/data/ajxd"
 export OUTPUT_DIR="../exps"
 
+pip install -r ../requirements.txt
+
 accelerate launch --mixed_precision "bf16" train_lora_w_ti.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
