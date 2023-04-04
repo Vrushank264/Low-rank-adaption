@@ -4,7 +4,7 @@ export OUTPUT_DIR="../exps"
 
 #pip install -r ../requirements.txt
 
-python3 ../lora_diffusion/cli_lora_pti.py \
+accelerate launch ../lora_diffusion/cli_lora_pti.py train 
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
   --output_dir=$OUTPUT_DIR \
