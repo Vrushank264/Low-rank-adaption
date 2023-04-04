@@ -32,5 +32,7 @@ accelerate launch --mixed_precision "bf16" train_lora_w_ti.py \
   --weight_decay_ti=0.000 \
   --weight_decay_lora=0.000 \
   --device="cuda:0" \
+  --lora_rank=8 \
+  --use_8bit_adam \
   --lora_dropout_p=0.1 \
   --lora_scale=2.0 \
